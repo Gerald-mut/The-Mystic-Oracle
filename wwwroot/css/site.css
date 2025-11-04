@@ -1,0 +1,134 @@
+body {
+  background-color: #120a1c; /* Dark purple */
+  color: #e0e0e0;
+  font-family: "Garamond", serif; /* A "fancy" font */
+
+  /* A subtle starry background */
+  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+}
+
+/* Your form container */
+form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #1f1231;
+  border: 1px solid #9a34ff;
+
+  /* The magical glow! */
+  box-shadow: 0 0 25px rgba(154, 52, 255, 0.7);
+  border-radius: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: #312147;
+  border: 1px solid #9a34ff;
+  color: #e0e0e0;
+  border-radius: 4px;
+}
+
+button {
+  /* ... style your button ... */
+  background-color: #9a34ff;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+/* Make the Reset button match the app purple and ensure it overrides
+   Bootstrap's .btn-secondary styling. Use the id for high specificity. */
+#resetBtn {
+  background-color: #9a34ff;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+}
+
+/* Optional hover/focus styles to match the theme */
+#resetBtn:hover,
+button:hover {
+  filter: brightness(0.95);
+}
+
+.fortune-result {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #ffd700; /* Gold */
+  text-shadow: 0 0 10px #ffd700;
+
+  /* Call our new animation */
+  animation: fadeIn 2s;
+}
+
+/* Define the animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  75% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+/* shake animation for invalid input (single quick shake) */
+.shake-invalid {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* When the user is "too hot" (gemini), keep shaking for the same
+   duration as the special message (4s). A single shake cycle is 0.5s,
+   so 8 iterations ≈ 4s. We use animation-fill-mode: both to ensure the
+   element holds the final state after the animation ends. */
+.shake-hot {
+  animation: shake 0.5s ease-in-out 0s 8;
+  animation-fill-mode: both;
+}
+
+/* styling for the 'too hot' message */
+.special-message {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #ff5733;
+  text-shadow: 0 0 10px #ff5733;
+  animation: fadeIn 1s;
+}
+
+.special-message ~ .fortune-result {
+  /* Keep the fortune hidden while the special message displays,
+         then start the fadeIn animation after 4 seconds. */
+  opacity: 0;
+  animation-delay: 4s;
+  /* "backwards" makes the element use the first keyframe during the delay
+         so it stays hidden until the animation starts. "forwards" keeps the
+         final state after the animation completes. "both" does both. */
+  animation-fill-mode: both;
+}

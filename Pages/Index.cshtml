@@ -1,0 +1,59 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">The Mystic Oracle Awaits....</h1>
+    <form method="post" class="@ViewData["State"]?.ToString()">
+        <div>
+            <label>Your Name:</label>
+            <input name="Name" />
+        </div>
+        <button type="submit">Ask the Oracle</button>
+    </form>
+
+    @if (ViewData["SpecialMessage"] != null)
+    {
+        <div class="special-message">
+            <p>@ViewData["SpecialMessage"]</p>
+        </div>
+    }
+    @if (!string.IsNullOrEmpty(Model.CurrentFortune))
+    {
+        <div class="fortune-result">
+            <h2>The Oracle Has Spoken!</h2>
+            <p>@Model.CurrentFortune</p>
+        </div>
+    }
+    
+    <!-- Reset button moved below the messages so it appears after any
+         special-message and fortune-result elements. -->
+    <div class="text-center mt-3">
+        <button id="resetBtn" type="button" class="btn btn-secondary">Reset</button>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        (function () {
+            const resetBtn = document.getElementById('resetBtn');
+            resetBtn?.addEventListener('click', function () {
+                const form = document.querySelector('form');
+                if (form) form.reset();
+
+                // Hide special message and fortune if they're present on the page
+                const special = document.querySelector('.special-message');
+                if (special) special.style.display = 'none';
+                const fortune = document.querySelector('.fortune-result');
+                if (fortune) fortune.style.display = 'none';
+
+                // Remove any shake state classes applied to the form
+                if (form) {
+                    form.classList.remove('shake-invalid', 'shake-hot', 'shake');
+                }
+            });
+        })();
+    </script>
+}
