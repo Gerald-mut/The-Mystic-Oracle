@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MysticOracle")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f80dfb8f9d8b88e0a89807df03915dcfd6f6f46b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+020af95f545cef892fdb2ff31f90451564cd6f1a")]
 [assembly: System.Reflection.AssemblyProductAttribute("MysticOracle")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MysticOracle")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
